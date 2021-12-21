@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="boxes">
+    <div class="header">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png"
+        width="200px"
+      />
+      <h1>PokéDex</h1>
+    </div>
+
+    <div [ngStyle]="{ backgroundColor: generateBackgroundColor() }">
+      <h2 [ngClass]="{ 'is-pink': buttonClicked }">
+        Pokémons attrapés : {{ pokemons.length }}
+      </h2>
+
+      <h3>Nom du Pokémon : {{ pokemonName }}</h3>
+      <input type="text" [(ngModel)]="pokemonName" />
+
+      <div class="list">
+        <div *ngIf="buttonClicked">
+          {{ pokemons[pokemons.length - 1] }} ajouté !
+        </div>
+        <div *ngIf="buttonRemoved">{{ removedPokemon }} supprimé !</div>
+      </div>
+
+      <div class="container">
+        <button type="button" class="btn btn-info btn-lg" (click)="addPokemon()">
+          Ajouter Pokémon
+        </button>
+      </div>
+    </div>
+
+    <div class="container2">
+      <app-pokemon-item
+        appBasicHighlight
+        (removeClick)="removePokemon(i)"
+        [name]="pokemon"
+        *ngFor="let pokemon of pokemons; let i = index"
+      >
+      </app-pokemon-item>
+    </div>
+  </div>
+</div>
