@@ -19,7 +19,7 @@ export class PokemonListComponent implements OnInit {
   pokemons: string[] = [];
   removedPokemon: string | undefined;
 
-  
+
   pokemonNameChanged($event: Event) {
     console.log($event);
     const inputElement = $event.target as HTMLInputElement;

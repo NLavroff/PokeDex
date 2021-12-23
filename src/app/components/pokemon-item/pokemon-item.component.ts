@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-item',
@@ -9,22 +10,22 @@ import { Router } from '@angular/router';
 
 export class PokemonItemComponent {
   @Input() name:string | undefined;
-  @Output() removeClick = new EventEmitter();
+  //@Output() removeClick = new EventEmitter();
 
 
-  /*constructor(private pokemonService: PokemonsService, private router: Router) {}
+  constructor(private pokemonService: PokemonService, private router: Router) {}
 
-  @HostListener('click') click() {
+  @HostListener('click') click(event:Event) {
     this.goToPokemon();
   }
 
-  goToPokemon(index:number){
+  goToPokemon() {
     this.router.navigate(['/pokemon', this.name]);
   }
-*/
-  remove() {
-    console.log('remove item');
-    this.removeClick.emit();
+
+  remove($event: MouseEvent) {
+    $event.stopPropagation;
+    this.pokemonService.removePokemonByName(this.name);
   }
 
 }
