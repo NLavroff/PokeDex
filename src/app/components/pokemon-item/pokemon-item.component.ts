@@ -14,7 +14,6 @@ export class PokemonItemComponent {
   //@Output() removeClick = new EventEmitter();
   @Input('pokemonName') name = '';
 
-  nbCaught = Math.round(Math.random() * 10);
 
   constructor(private loggingService: LoggingService, private pokemonService: PokemonService, private router: Router) {}
 

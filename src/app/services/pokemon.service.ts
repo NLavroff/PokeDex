@@ -20,7 +20,10 @@ export class PokemonService {
   }*/
 
   addPokemon(name: string) {
+    if(!name) return;
+    if (this.pokemons.includes(name)) return false;
     this.pokemons.push(name);
+    return true;
     //this.storePokemonList
   }
 

@@ -24,14 +24,17 @@ export class PokemonListComponent implements OnInit {
   removedPokemon: string | undefined;
 
   onAddPokemon(pokemonName:string) {
-    
+    if (!this.pokemonName) return;
     this.loggingService.logItemCreated(this.pokemonName);
     this.pokemonService.addPokemon(this.pokemonName);
     if(this.pokemonName) {
       this.buttonClicked = true;
       this.buttonRemoved = false;
   }
+  
+  this.pokemonName = '';
 }
+
 
   /*pokemonNameChanged($event: Event) {
     console.log($event);
