@@ -24,7 +24,7 @@
       </div>
 
       <div class="container">
-        <button type="button" class="btn btn-info btn-lg" (click)="addPokemon()">
+        <button type="button" class="btn btn-info btn-lg" (click)="onAddPokemon(pokemonName)">
           Ajouter Pokémon
         </button>
       </div>
@@ -33,9 +33,10 @@
     <div class="container2">
       <app-pokemon-item
         appBasicHighlight
-        (removeClick)="removePokemon(i)"
-        [name]="pokemon"
         *ngFor="let pokemon of pokemons; let i = index"
+        [pokemonName]="pokemon"
+        
+
       >
       </app-pokemon-item>
     </div>
